@@ -29,7 +29,6 @@ int main(int argc, char *argv[])
 
 	file = fopen(argv[1], "r");
 	bus.file = file;
-	
 	if (!file)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
@@ -41,17 +40,13 @@ int main(int argc, char *argv[])
 		read_line = getline(&content, &size, file);
 		bus.content = content;
 		counter++;
-		
 		if (read_line > 0)
 		{
 			execute(content, &stack, counter, file);
 		}
-		
 		free(content);
 	}
-	
 	free_stack(stack);
 	fclose(file);
-	
 	return (0);
 }
